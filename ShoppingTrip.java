@@ -3,10 +3,13 @@ public class ShoppingTrip {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Mall TheMall = new NatickCollection();
-		Shopper TheShopper = new Shopper("Ranen", 6000);
+		Mall theMall = new NatickCollection();
+		Shopper theShopper = new Shopper("Ranen", 6000);
 		
-		TheShopper.visit(TheMall);
+		
+		System.out.println("Welcome to the " + theMall.getName() + ", " + theShopper.getName() + ".");
+		theShopper.visit(theMall);
+		//theMall.visit(theShopper);
 	}
 
 }
