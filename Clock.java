@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Clock {
-	private int time;
+	protected int time;
 	
 	public Clock() {
 		// TODO Auto-generated constructor stub
