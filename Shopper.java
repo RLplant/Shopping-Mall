@@ -1,6 +1,7 @@
 import java.util.Scanner;  
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.ArrayList;
 
 public class Shopper {
@@ -39,6 +40,12 @@ public class Shopper {
 	public void buy(Item item, Store store) {
 		Receipt receipt = new Receipt(item,store);
 		shoppingBag.put(receipt, item);
+	}
+	public void showBag() {
+		System.out.println("You own: ");
+		for (Item item: shoppingBag.values()) {
+			System.out.println(item.getName() + ", ");
+		}
 	}
 	
 	public String getName() {
