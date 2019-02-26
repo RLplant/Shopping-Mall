@@ -92,7 +92,7 @@ public abstract class Store {
 				case "b": System.out.println("You have: $" + theShopper.getBalance());
 						break;
 				case "check":	
-				case "Check": checkout = true;
+				case "Check": checkout(theShopper);
 						break;
 				case "e":
 				case "E": exit = true;
@@ -104,9 +104,9 @@ public abstract class Store {
 				
 			}
 		}
-		if(checkout == true) {
-			checkout(theShopper);
-		}
+		
+			
+		
 	}
 	
 	
@@ -131,7 +131,8 @@ public abstract class Store {
 	}
 	public void checkout(Shopper theShopper) { // 
 		boolean confirm = false;
-		while (confirm == false) {
+		boolean exit = false;
+		while ((confirm == false)&&(exit == false)) {
 			System.out.println("Welcome to checkout. Is there anything you would like to remove from cart?" );
 			for (int i = 0; i<cart.size(); i++) {
 				float f = items.get(cart.get(i));
@@ -151,10 +152,10 @@ public abstract class Store {
 				}
 			} catch(NumberFormatException err) {
 				if (s.equals("e")) {
-					purchaseMenu(theShopper);
+					exit = true;
 				}
 				else if (s.equals("c")) {
-					confirm = true;
+					transaction(theShopper);
 				}
 			}
 			catch(IndexOutOfBoundsException out) {
@@ -162,7 +163,7 @@ public abstract class Store {
 			}
 		}
 		
-		transaction(theShopper);
+		
 	}
 	
 	public void transaction(Shopper theShopper) { //not done, balance check and stuff
@@ -186,11 +187,12 @@ public abstract class Store {
 				theShopper.buy(cart.get(i),this);
 				
 			}
-			//make transaction: go through cart and make reciepts and add both r and i to shopping bag
+			purchaseMenu(theShopper);
+			
 			
 		}
 		else {
-			System.out.println("You cannot afford that transaction. Returning to purchase menu.");
+			System.out.println("You cannot afford that transaction. Please remove some items from your cart and try again.");
 		}
 		
 		

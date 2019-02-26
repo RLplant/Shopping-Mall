@@ -8,9 +8,10 @@ public class NatickCollection extends Mall {
 		mallName = "Natick Collection";
 		stores = new ArrayList<Store>(storeAmount);
 		Store wegmans = new Wegmans();
+		Store tesla = new Tesla();
 
 		stores.add(wegmans);
-		
+		stores.add(tesla);
 	}
 	
 	

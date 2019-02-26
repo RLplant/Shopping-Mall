@@ -10,6 +10,9 @@ public class Wegmans extends Store {
 		Item carrots = new Carrots();
 		items.put(carrots, 1.49f);
 		itemList.add(carrots);
+		Item eggs = new Eggs();
+		items.put(eggs, 3.99f);
+		itemList.add(eggs);
 		
 		
 	}

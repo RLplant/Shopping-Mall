@@ -50,28 +50,37 @@ public abstract class Mall {
 			for (int i = 0; i < getStoreAmount();i++ ) {
 				System.out.println("   " + (i+1) + ". " + getStore(i));
 			}
-			System.out.println("   I. See Owned Items");
+			System.out.println("   i. See Owned Items");
 			System.out.println("   b. See Balance");
 			System.out.println("   L. Leave");
 			input = scan.next();
-			if ((input.equals("1"))||(input.equals(getStore(0)))) {
-				Store temp = stores.get(0);
+			int i;
+			try {
+				i = Integer.parseInt(input)-1;
+				Store temp = stores.get(i);
 				//do some stuff with time and stuff
 				temp.shopAt(theShopper);
 			}
+			catch(NumberFormatException e){
+					switch(input) {
+
+					case "i": 
+					case "I": theShopper.showBag();
+							break;
+					case "b": System.out.println("You have: $" + theShopper.getBalance() + ".");
+							break;
+					case "l":	
+					case "L":
+					case "leave":
+					case "Leave": theShopper.beDone();
+							break;
+					default : 
+					}
+				}
+				catch(IndexOutOfBoundsException out) {
+					
+				}
 			
-			else if (input.equals("I")) {
-				theShopper.showBag();
-			}
-			else if (input.equals("b")) {
-				System.out.println("You have $" + theShopper.getBalance() + ".");
-			}
-			else if ((input.equals("l"))||(input.equals("L"))||(input.equals("leave"))||(input.equals("leave"))) {
-				theShopper.beDone();
-				break;
-			}
-			else {
-			}
 			
 			
 		}
